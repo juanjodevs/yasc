@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "title": "Cozy Place",
+        "artist": "Keys of Moon",
+        "file": "01.mp3",
+        "cover": "https://www.chosic.com/wp-content/uploads/FreeMusicTagsImages/120/Relaxing.jpg"
+    },
+    {
+        "id": "2",
+        "title": "Memories Of Spring",
+        "artist": "Tokyo Music Walker",
+        "file": "02.mp3",
+        "cover": "https://www.chosic.com/wp-content/uploads/FreeMusicTagsImages/120/Beats.jpg"
+    }
+]

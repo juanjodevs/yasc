@@ -1,0 +1,12 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Player from '@components/Player'
+import Songselector from '@components/Songselector'
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<Songselector client:load/>
+		<Player client:load/>	
+	</main>
+</Layout>
