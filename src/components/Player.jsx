@@ -1,14 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
-import { usePlayerStore } from '../store'
+import { usePlayerStore } from '@store/index'
+
+export const PlayIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="self-center" width="36" height="36" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" strokeWidth="0" fill="currentColor"></path>
+  </svg>
+)
+
+export const PauseIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="self-center" width="36" height="36" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" strokeWidth="0" fill="currentColor"></path>
+    <path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" strokeWidth="0" fill="currentColor"></path>
+  </svg>
+)
 
 const Player = () => {
   const audioRef = useRef()
   const [
     song,
+    album,
     isPlaying,
     togglePlaying
   ] = usePlayerStore((state) => [
     state.song,
+    state.album,
     state.isPlaying,
     state.togglePlaying
   ])
@@ -30,6 +47,7 @@ const Player = () => {
       }
       audioRef.current.load()
     }
+    console.log(song)
   }, [song])
 
   useEffect(() => {
@@ -53,20 +71,57 @@ const Player = () => {
   }
 
   return (
-    <div className="flex flex-col max-w-[300px] m-auto pt-10 gap-2">
+    <>
       <audio autoPlay ref={audioRef}>
-        <source src={song ? `/music/${song.file}` : null}/>
+        <source src={song ? `/music/${album.id}/${song}` : null}/>
       </audio>
-      {song && <button className={`${isPlaying ? 'bg-red-700' : 'bg-teal-700'} px-5 py-2 rounded text-white cursor-pointer`} onClick={() => togglePlaying()}>{isPlaying ? 'Pause' : 'Play'}</button>}
-      <div className="flex flex-row gap-2">
-        {duration !== 0 && (
-          <>
-            <span className="text-xs">{formatTime(currentTime)}/{formatTime(duration)}</span>
-            <input className="w-full" type="range" min="0" max={duration} onChange={(e) => handleBar(e.target.value)} value={currentTime} />
-          </>
-        )}
-      </div>
-    </div>
+      {
+        song && album && (
+          <div className="grid grid-cols-3 justify-between w-full">
+            <div className="w-[300px] self-center mx-2 p-2">
+              <a href={`/album/${album.id}`} class="grid grid-cols-[50px_1fr] gap-5">
+                <picture class="h-12 w-12 self-center">
+                  <img
+                    class="object-cover h-full w-full rounded"
+                    src={album.cover}
+                    alt={`${album.title} cover`}
+                    width="48"
+                    height="48" />
+                </picture>
+                <div class="flex flex-col">
+                  <span class="text-white">{album.title}</span>
+                  <span class="text-xs font-thin">{album.artists.join(', ')}</span>
+                </div>
+              </a>
+            </div>
+            <div className='flex flex-col justify-center'>
+              <div className="self-center flex h-10 w-10 bg-sky-700 justify-center rounded-full p-3 z-10 cursor-pointer my-2" onClick={togglePlaying}>
+                {
+                  isPlaying
+                    ? <PauseIcon className="self-center"/>
+                    : <PlayIcon className="self-center"/>
+                }
+              </div>
+              <div className="flex flex-row gap-2 min-w-[500px] text-neutral-400 justify-center">
+                <span className="text-xs">{formatTime(currentTime)}</span>
+                <input
+                  className="w-[400px] cursor-pointer opacity-60 hover:opacity-100 appearance-none h-1 self-center bg-neutral-600 hover:bg-neutral-400"
+                  type="range"
+                  min="0"
+                  max={duration}
+                  onChange={(e) => handleBar(e.target.value)} value={currentTime}
+                />
+                <span className="text-xs">{formatTime(duration)}</span>
+              </div>
+            </div>
+            <div className='flex justify-end'>
+
+            </div>
+          </div>
+        )
+      }
+    </>
+
   )
 }
 

@@ -1,0 +1,9 @@
+---
+import Layout from '@layouts/Layout.astro';
+const { id } = Astro.params
+---
+<Layout title="Yasc">
+	<content class="flex flex-col bg-gradient-to-b from-sky-900 to-60% w-full h-full rounded-lg">
+		Vista del album {id}
+	</content>
+</Layout>

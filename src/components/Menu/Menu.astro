@@ -1,0 +1,36 @@
+---
+import albums from '@lib/data.json'
+import MenuItem from './MenuItem.astro'
+import MenuItemCard from './MenuItemCard.astro'
+import Home from '@icons/Home.astro'
+import Search from '@icons/Search.astro'
+import Playlist from '@icons/Playlist.astro'
+---
+<nav class=" text-neutral-400">
+    <div class="py-2">
+        <ul>
+            <MenuItem href="/">
+                <Home/>
+                Inicio
+            </MenuItem>
+            <MenuItem href="#">
+                <Search/>
+                Buscar
+            </MenuItem>
+        </ul>
+    </div>
+    <div class="border border-b border-neutral-700 my-2"></div>
+    <div>
+        <ul class="flex flex-col gap-2">
+            <MenuItem href="#">
+                <Playlist/>
+                Tu biblioteca
+            </MenuItem>
+            {
+                albums.map((album) => (
+                    <MenuItemCard {album}/>
+                ))
+            }
+        </ul>
+    </div>
+</nav>

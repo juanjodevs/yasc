@@ -1,12 +1,17 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Player from '@components/Player'
-import Songselector from '@components/Songselector'
+import albums from '@lib/data.json'
+import AlbumCard from '@components/Home/AlbumCard.astro'
 ---
-<Layout title="Welcome to Astro.">
-	<main class="grid grid-cols-1 items-center content-center bg-teal-100 h-screen">
-		<p class="text-center text-4xl m-5">Yet another Spotify clone just for learning purposes (WIP)</p>
-		<Songselector client:load/>
-		<Player client:load/>	
-	</main>
+<Layout title="Yasc">
+	<content class="flex flex-col bg-gradient-to-b from-sky-900 to-60% w-full h-full rounded-lg">
+		<div class="ml-10 my-10 text-5xl">Bienvenido!</div>
+		<div class="mx-10 flex flex-wrap justify-center gap-5">
+			{
+				albums.map((album) => (
+					<AlbumCard {album} />
+				))
+			}			
+		</div>
+	</content>
 </Layout>

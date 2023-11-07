@@ -1,10 +1,15 @@
 import { create } from 'zustand'
-import songs from '@data/songs.json'
+import albums from '@lib/data.json'
 
 const usePlayerStore = create((set) => ({
   isPlaying: false,
   song: null,
-  selectSong: (id) => set((state) => (state.song = songs.find((song) => song.id === id))),
+  album: null,
+  selectSong: (id) => {
+    const album = albums.find((album) => album.id === id)
+    const song = album.songs[0]
+    set({ song, album })
+  },
   togglePlaying: () => set((state) => ({ isPlaying: !state.isPlaying }))
 }))
 
