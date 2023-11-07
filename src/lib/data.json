@@ -1,0 +1,50 @@
+[
+        {
+            "id": 1,
+            "albumId": 1,
+            "title": "Blue Note",
+            "artists": ["Lucie Craveco", "HoKo"],
+            "cover": "https://lofigirl.com/wp-content/uploads/2023/10/hill_cover-final-1536x861.png",
+            "songs": [
+                "Bords-de-Marne.mp3",
+                "Evening-Colors-w_-Damien-Fleau.mp3",
+                "Lying-in-the-Grass.mp3"
+            ]
+        },
+        {
+            "id": 2,
+            "albumId": 2,
+            "title": "Halloween 2023",
+            "artists": ["Lofi Records"],
+            "cover": "https://lofigirl.com/wp-content/uploads/2023/10/halloween-final-1536x864.png",
+            "songs": [
+                "Dosi - Trick or Treat MIX.mp3",
+                "LUQET - Its Getting Closer (Mix).mp3",
+                "Nothingtosay - Ravens Tale (feat Klemsis).mp3"
+            ]
+        },
+        {
+            "id": 3,
+            "albumId": 3,
+            "title": "The Legend of Orpheus",
+            "artists": ["Dimension32"],
+            "cover": "https://lofigirl.com/wp-content/uploads/2023/09/Dimensions32_TheLegendOfOrpheus_withoutTitle_16_9-1536x861.jpg",
+            "songs": [
+                "A Myth Underground (feat. Quantum Break).mp3",
+                "Charming The Gods (feat. Quantum Break x Iridae).mp3",
+                "Enchanted Melody.mp3"
+            ]
+        },
+        {
+            "id": 4,
+            "albumId": 4,
+            "title": "Dune Days",
+            "artists": ["Recalibration Machine, Less Gravity, Lawrence Walther"],
+            "cover": "https://lofigirl.com/wp-content/uploads/2023/09/DuneDaysFullVersion-1536x864.png",
+            "songs": [
+                "Atmosphere (MASTER).mp3",
+                "Emotions (MASTER).mp3",
+                "Hourglass (MASTER).mp3"
+            ]
+    }
+]

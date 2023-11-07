@@ -1,0 +1,18 @@
+---
+const {album} = Astro.props
+import PlayButton from "@components/Home/PlayButton";
+---
+<div class="group flex flex-col w-[220px] bg-neutral-600 hover:bg-slate-600 bg-opacity-40 p-5 rounded-xl cursor-pointer transition">
+    <picture class="relative h-[150px]">
+        <img
+            class="rounded-xl object-cover h-full w-full"
+            src={album.cover}
+            alt={`Album ${album.title} cover`}
+        />
+        <div class="absolute opacity-0 right-2 bottom-0 group-hover:opacity-100 group-hover:-translate-y-2 transition duration-500">
+            <PlayButton {album} client:load/>
+        </div>
+    </picture>
+    <div class="font-bold mt-5 text-xl">{album.title}</div>
+    <div class="text-sm font-thin mt-2">{album.artists?.join(', ')}</div>
+</div>

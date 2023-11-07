@@ -1,0 +1,19 @@
+---
+const { album } = Astro.props;
+---
+<li class="hover:bg-neutral-700 mx-2 p-2 rounded transition">
+    <a href={`/album/${album.id}`} class="grid grid-cols-[50px_1fr] gap-5">
+        <picture class="h-12 w-12 self-center">
+            <img
+                class="object-cover h-full w-full rounded"
+                src={album.cover}
+                alt={`${album.title} cover`}
+                width="48"
+                height="48" />
+        </picture>
+        <div class="flex flex-col">
+            <span class="text-white">{album.title}</span>
+            <span class="text-xs font-thin">{album.artists.join(', ')}</span>
+        </div>
+    </a>
+</li>

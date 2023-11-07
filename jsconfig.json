@@ -4,7 +4,10 @@
       "paths": {
         "@components/*": ["src/components/*"],
         "@layouts/*": ["src/layouts/*"],
-        "@data/*": ["src/data/*"]
+        "@store/*": ["src/store/*"],
+        "@data/*": ["src/data/*"],
+        "@lib/*": ["src/lib/*"],
+        "@icons/*": ["src/icons/*"],
       }
     },
     "exclude": [
