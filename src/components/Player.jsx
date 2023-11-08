@@ -47,7 +47,6 @@ const Player = () => {
       }
       audioRef.current.load()
     }
-    console.log(song)
   }, [song])
 
   useEffect(() => {
@@ -79,18 +78,18 @@ const Player = () => {
         song && album && (
           <div className="grid grid-cols-3 justify-between w-full">
             <div className="w-[300px] self-center mx-2 p-2">
-              <a href={`/album/${album.id}`} class="grid grid-cols-[50px_1fr] gap-5">
-                <picture class="h-12 w-12 self-center">
+              <a href={`/album/${album.id}`} className="grid grid-cols-[50px_1fr] gap-5">
+                <picture className="h-12 w-12 self-center">
                   <img
-                    class="object-cover h-full w-full rounded"
+                    className="object-cover h-full w-full rounded"
                     src={album.cover}
                     alt={`${album.title} cover`}
                     width="48"
                     height="48" />
                 </picture>
-                <div class="flex flex-col">
-                  <span class="text-white">{album.title}</span>
-                  <span class="text-xs font-thin">{album.artists.join(', ')}</span>
+                <div className="flex flex-col">
+                  <span className="text-white">{album.title}</span>
+                  <span className="text-xs font-thin">{album.artists.join(', ')}</span>
                 </div>
               </a>
             </div>

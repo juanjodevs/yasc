@@ -1,9 +1,54 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro'
 const { id } = Astro.params
+import albums from '@lib/data.json'
+const album = albums.find((item) => item.id == parseInt(id))
+import PlayButton from '@components/Home/PlayButton'
 ---
 <Layout title="Yasc">
-	<content class="flex flex-col bg-gradient-to-b from-sky-900 to-60% w-full h-full rounded-lg">
-		Vista del album {id}
+	<content class="flex flex-col bg-gradient-to-b from-sky-900 to-60% w-full h-full rounded-lg p-10">
+		<div class="flex flex-row gap-10">
+			<picture class="aspect-square h-52 w-52">
+				<img class="object-cover h-full object-left rounded-xl" src={album.cover} />
+			</picture>
+			<div class="flex flex-col justify-center gap-10">
+				<div>
+					<p class="text-sm">Album</p>
+					<p class="text-5xl font-bold">{album.title}</p>
+				</div>
+				<div>
+					<p class="text-sm">{album.artists.join(', ')}</p>
+					<p class="text-sm">{album.songs.length} canciones</p>
+				</div>
+			</div>
+		</div>
+		<div class="my-5">
+			<PlayButton {album} client:load/>
+		</div>
+		<div>
+			<table class="table-auto font-thin text-sm m-auto">
+				<thead class="text-center border-b">
+					<th class="py-2">#</th>
+					<th class="py-2">Título</th>
+					<th class="py-2">Álbum</th>
+					<th class="py-2">Artists</th>
+				</thead>
+				<tbody>
+					{
+						album.songs.map((song, i) => (
+							<tr>
+								<td class="px-10 py-5">{i+1}</td>
+								<td class="flex flex-row px-10 py-2">
+									<img class="h-10 w-10 rounded" src={album.cover} />
+									<p class="self-center ml-5 text-sm">{song.replace('.mp3', '').replaceAll('-', ' ')}</p>
+								</td>
+								<td class="px-10 py-5">{album.title}</td>
+								<td class="px-10 py-5">{album.artists.join(', ')}</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
 	</content>
 </Layout>

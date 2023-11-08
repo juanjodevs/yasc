@@ -18,7 +18,8 @@ export const PauseIcon = () => (
 const PlayButton = ({ album }) => {
   const [selectSong, isPlaying, currentAlbum, togglePlaying] = usePlayerStore(state => [state.selectSong, state.isPlaying, state.album, state.togglePlaying])
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     if (album?.id === currentAlbum?.id) {
       togglePlaying()
     } else {
@@ -27,7 +28,7 @@ const PlayButton = ({ album }) => {
   }
 
   return (
-    <div className="flex h-10 w-10 bg-sky-700 justify-center align-middle rounded-full p-3 z-10" onClick={() => handleClick(album.id)}>
+    <div className="flex h-10 w-10 bg-sky-700 justify-center align-middle rounded-full p-3 z-10 cursor-pointer" onClick={(e) => handleClick(e)}>
       {
         isPlaying && album.id === currentAlbum.id
           ? <PauseIcon className="self-center"/>
