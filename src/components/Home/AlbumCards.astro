@@ -1,0 +1,18 @@
+---
+import albums from '@lib/data.json'
+import AlbumCard from '@components/Home/AlbumCard.astro'
+---
+<div class="mx-10 flex flex-wrap gap-5">
+    {
+        albums.map((album) => (
+            <AlbumCard {album} />
+        ))
+    }			
+</div>
+
+<script is:inline>
+    document.querySelectorAll('.album_card').forEach((el, i) => {
+        el.style.animationDelay = `${(i*200)}ms`
+    })
+    console.log('script loaded')
+</script>

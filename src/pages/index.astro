@@ -1,17 +1,10 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import albums from '@lib/data.json'
-import AlbumCard from '@components/Home/AlbumCard.astro'
+import AlbumCards from '@components/Home/AlbumCards.astro'
 ---
 <Layout title="Yasc">
 	<content class="flex flex-col bg-gradient-to-b from-sky-900 to-60% w-full h-full rounded-lg">
 		<div class="ml-10 my-10 text-5xl">Bienvenido!</div>
-		<div class="mx-10 flex flex-wrap justify-center gap-5">
-			{
-				albums.map((album) => (
-					<AlbumCard {album} />
-				))
-			}			
-		</div>
+		<AlbumCards />
 	</content>
 </Layout>
